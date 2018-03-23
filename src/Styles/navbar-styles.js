@@ -2,6 +2,10 @@ import styled from 'styled-components'
 import * as consts from './constants'
 
 const NavbarRoot = styled.div`
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100px;
     background-color: white;
@@ -19,7 +23,7 @@ const NavbarContainer = styled.div`
 `
 
 const NavbarLogo = styled.img`
-    height: 60px;
+    height: 85px;
     width: auto;
 `
 

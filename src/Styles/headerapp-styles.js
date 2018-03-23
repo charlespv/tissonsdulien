@@ -8,6 +8,7 @@ const headerAppRoot = styled.div`
     position: relative;
     width: 100%;
     height: 80vh;
+    margin-top: 100px;
     background-color: #2F4E7C;
 `
 
@@ -50,7 +51,7 @@ const landingContainer = styled.div`
 const landingTitle = styled.h1`
     color: white;
     font-family: 'Fredoka One', cursive;
-    font-size: 45px;
+    font-size: 50px;
     font-weight: 300;
     line-height: 2px;
 `
@@ -95,7 +96,7 @@ const appMenuInputGroup = styled.form`
     display: flex;
     flex-direction: column;
     align-items: left;
-    margin: 35px 0;
+    margin: 15px 0 35px 0;
     & > p {
         font-size: 16px;
         font-weight: 700;

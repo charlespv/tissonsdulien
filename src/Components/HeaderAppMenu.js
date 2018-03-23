@@ -18,7 +18,7 @@ export default class HeaderAppMenu extends Component {
         return (
             <h.container>
                 <m.appMenu>
-                    <m.title>Un dejeuner ? C’est mieux à deux.</m.title>
+                    <m.title>La rencontre se fait ici</m.title>
                     <m.inputGroup>
                         <p>Vous souhaitez:</p>
                         <div>
