@@ -9,11 +9,13 @@ const Root = styled.div`
 
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
+  @import url('https://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400,700');
+
   body {
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
   }
 `
 

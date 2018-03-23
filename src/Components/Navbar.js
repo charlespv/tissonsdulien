@@ -19,10 +19,10 @@ class Home extends Component {
                     <NavLink to={'/about'}>Nos valeurs</NavLink>
                     <NavLink to={'/'}>Aide</NavLink>
                     <NavLink to={'/login'}>
-                        <btn.btnRoundedTransparent>Se connecter</btn.btnRoundedTransparent>
+                        <btn.roundedTransparent>Se connecter</btn.roundedTransparent>
                     </NavLink>
                     <NavLink to={'/register'}>
-                        <btn.btnRoundedTransparent>S'inscrire</btn.btnRoundedTransparent>
+                        <btn.roundedTransparent>S'inscrire</btn.roundedTransparent>
                     </NavLink>
                 </s.NavbarLinks>
             </s.NavbarContainer>
