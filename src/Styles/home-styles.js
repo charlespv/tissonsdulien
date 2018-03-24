@@ -204,6 +204,7 @@ const footerStores = styled.div`
 const footerStoreImg = styled.img`
     width: 110px;
     height: 32.42px;
+    border-radius: 4px;
 `
 
 export {
