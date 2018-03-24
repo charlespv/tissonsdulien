@@ -107,6 +107,11 @@ const appMenuInputGroup = styled.form`
         font-weight: 400;
         color: ${consts.colorGray}
     }
+    & > div > input {
+        font-size: 14px;
+        font-weight: 400;
+        color: ${consts.colorGray}
+    }
 `
 
 // MAP

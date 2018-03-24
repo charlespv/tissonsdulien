@@ -22,11 +22,17 @@ export default class HeaderAppMenu extends Component {
                     <m.inputGroup>
                         <p>Vous souhaitez:</p>
                         <div>
-                            <input type={'radio'}/>
+                            <input type={'radio'}
+                                checked={(this.state.role===1) ? true : false}
+                                onClick={() => this.toggleRole(1)}
+                            />
                             <label>Faire les courses</label>
                         </div>
                         <div>
-                            <input type={'radio'}/>
+                            <input type={'radio'}
+                                checked={(this.state.role===2) ? true : false}
+                                onClick={() => this.toggleRole(2)}
+                            />
                             <label>Trouver un voisin</label>
                         </div>
                         <p>Dites nous où:</p>
