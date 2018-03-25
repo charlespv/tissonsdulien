@@ -4,15 +4,78 @@ import { Navbar, HeaderApp } from '../Components/index.js'
 import glyphs from '../Assets/glyphs/index'
 import testimonials from '../Assets/testimonials/index'
 import * as consts from '../Styles/constants.js'
-import * as g from '../Styles/global.js'
 import * as s from '../Styles/home-styles.js'
+
+const MapContext = React.createContext('map')
+const MapConsumer = MapContext.Consumer
+
+class MapProvider extends Component {
+  state = {
+    state: {
+      showMap: false,
+      role: 0,
+      address: '',
+      coords: {
+        lat: -1,
+        lng: -1
+      }
+    },
+    actions: {
+      toggleMap: () => {
+        this.setState({
+          ...this.state,
+          state: {
+              ...this.state.state,
+              showMap: true
+            }
+          })
+        },
+      updateRole: (data) => {
+        this.setState({
+          ...this.state,
+          state: {
+              ...this.state.state,
+              role: data
+            }
+          })
+        },
+      updateAddress: (data) => {
+        this.setState({
+          ...this.state,
+          state: {
+              ...this.state.state,
+              address: data
+            }
+          })
+        },
+      updateCoords: (data) => {
+        this.setState({...this.state,
+          state: {
+            ...this.state.state,
+            coords: data
+          }
+        })
+      }
+    }
+  }
+
+  render () {
+    return (
+      <MapContext.Provider value={this.state}>
+        {this.props.children}
+      </MapContext.Provider>
+    )
+  }
+}
 
 class Home extends Component {
   render() {
     return (
         <div>
          <Navbar/>
-            <HeaderApp/>
+            <MapProvider>
+              <HeaderApp/>
+            </MapProvider>
             <s.section bgc={'#fff'}>
               <s.sectionCtnr>
                 <s.sectionTitle>Un voisin sélectionné et impliqué.</s.sectionTitle>
@@ -176,4 +239,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export {Home, MapProvider, MapConsumer};

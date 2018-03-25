@@ -97,6 +97,7 @@ const appMenuInputGroup = styled.form`
     flex-direction: column;
     align-items: left;
     margin: 15px 0 35px 0;
+    width: 100%;
     & > p {
         font-size: 16px;
         font-weight: 700;
@@ -107,10 +108,16 @@ const appMenuInputGroup = styled.form`
         font-weight: 400;
         color: ${consts.colorGray}
     }
-    & > div > input {
+    & > div {
+        text-align: left;
+        width: 100%;
+    }
+    & > div > div >input {
         font-size: 14px;
         font-weight: 400;
-        color: ${consts.colorGray}
+        box-sizing: border-box;
+        width: 100%;
+        color: black;
     }
 `
 
@@ -130,6 +137,10 @@ const lstyles = {
     separator: landingSeparator
 }
 
+const mapStyles = {
+    map: map   
+}
+
 const headerAppStyles = {
     root: headerAppRoot,
     container: headerAppCtnr
@@ -143,6 +154,7 @@ const menuStyles = {
 
 export {
     lstyles,
+    mapStyles,
     headerAppStyles,
     menuStyles
 }

@@ -1,31 +1,21 @@
 import React, { Component } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { MapConsumer } from '../Containers/Home'
 import { HeaderAppLanding, HeaderAppMap, HeaderAppMenu } from './index'
-import * as g from '../Styles/global.js'
-import * as btn from '../Styles/buttons.js'
-import {headerAppStyles as h, menuStyles as m} from '../Styles/headerapp-styles.js'
-import logo from '../Assets/logo.png'
+import {headerAppStyles as h} from '../Styles/headerapp-styles.js'
 
-class HeaderApp extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      showMap: false
-    }
-  }
-
-  toggleMap() {
-    this.setState({showMap: !this.state.showMap})
-  }
-
+export default class HeaderApp extends Component {
   render() {
     return (
-        <h.root>
-          {(this.state.showMap) ? <HeaderAppMap/> : <HeaderAppLanding/>}
-          <HeaderAppMenu toggleMap={() => this.toggleMap()}/>
-        </h.root>
-    );
+      <h.root>
+        <MapConsumer>  
+          {({state, actions}) => (
+            <React.Fragment>
+              {(state.showMap) ? <HeaderAppMap state={state} actions={actions}/> : <HeaderAppLanding />}
+              <HeaderAppMenu state={state} actions={actions}/>
+            </React.Fragment>
+          )}
+        </MapConsumer>
+      </h.root>
+    )
   }
 }
-
-export default HeaderApp;
