@@ -1,11 +1,14 @@
-import React, { Component } from 'react'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import React from 'react'
+import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps"
+import { MarkerWithLabel } from "react-google-maps/lib/components/addons/MarkerWithLabel"
+import { MarkerClusterer } from "react-google-maps/lib/components/addons/MarkerClusterer"
 import { compose, withProps } from "recompose"
 import { mapStyles as s } from '../Styles/headerapp-styles.js'
+import * as mockData from '../data.json'
 
 const MapComponent = compose(
   withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAzhpQJO0NaUJbilkXiFD5va7wKTJouIfA&libraries=geometry,drawing,places",
+    googleMapURL: document.getElementById('MapsAPIURL').getAttribute('src'),
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `100%` }} />,
     mapElement: <div style={{ height: `100%` }} />,
@@ -14,46 +17,78 @@ const MapComponent = compose(
   withGoogleMap
 )((props) =>
     <GoogleMap
-      defaultZoom={13}
+      defaultZoom={15}
       defaultCenter={props.coords}
+      center={props.coords}
       defaultOptions={{
         disableDefaultUI: true,
         zoomControl: false,
         pasControl: false,
       }}
     >
-    {props.isMarkerShown &&
-      <Marker position={props.coords}
-        onClick={props.onMarkerClick}/>
-    }
+      <MarkerClusterer
+        averageCenter
+        enableRetinaIcons
+        gridSize={60}
+      >
+        <MarkerWithLabel position={props.coords}
+          labelAnchor={new window.google.maps.Point(35, 60)}
+          labelStyle={{
+            backgroundColor: "#E0403C",
+            color: "white",
+            fontSize: "16px",
+            padding: "10px 16px",
+            borderRadius: "5px",
+            zindex: "2200"
+        }}>
+          <div onClick={() => console.log('yay')}>Vous</div>
+        </MarkerWithLabel>
+        {mockData.data.map((item, index) => (
+          <MarkerWithLabel position={item}
+            key={index}
+            labelAnchor={new window.google.maps.Point(55, 60)}
+            labelStyle={{
+              backgroundColor: "#E0403C",
+              color: "white",
+              fontSize: "16px",
+              padding: "10px 16px",
+              borderRadius: "5px"
+          }}>
+            <div>{`Voisin n°${index}`}</div>
+          </MarkerWithLabel>
+        ))}
+      </MarkerClusterer>
     </GoogleMap>
   )
 
 export default class HeaderAppMap extends React.PureComponent {
   state = {
-    isMarkerShown: false,
+    coords: this.props.state.coords
   }
 
+  componentWillReceiveProps(nextProps) {    
+    this.setState({coords: nextProps.state.coords})
+  }
+
+  componentWillMount() {
+    this.setState({ markers: [] })
+  }
+  
   componentDidMount() {
     this.delayedShowMarker()
   }
-
+  
   delayedShowMarker = () => {
     setTimeout(() => {
       this.setState({ isMarkerShown: true })
     }, 3000)
   }
 
-  handleMarkerClick = () => {
-    this.setState({ isMarkerShown: false })
-    this.delayedShowMarker()
-  }
-
-  render() {
-    console.log(this.props.state)
+  render() {   
     return (
       <s.map>
-        <MapComponent isMarkerShown coords={this.props.state.coords}/>
+        <s.mapOverlay></s.mapOverlay>
+        <MapComponent coords={this.state.coords}/>
       </s.map>
     )
   }

@@ -73,6 +73,7 @@ const landingSeparator = styled.div`
 
 const appMenu = styled.div`
     width: 430px;
+    z-index: 1000;
     border-radius: 25px;
     padding: 35px 30px;
     box-sizing: border-box;
@@ -127,6 +128,13 @@ const map = styled.div`
     ${lbase}
 `
 
+const mapOverlay = styled.div`
+    position: absolute;
+    z-index: 800;
+    width: 100%;
+    height: 100%;
+`
+
 // EXPORTS
 
 const lstyles = {
@@ -138,7 +146,8 @@ const lstyles = {
 }
 
 const mapStyles = {
-    map: map   
+    map: map,
+    mapOverlay: mapOverlay
 }
 
 const headerAppStyles = {

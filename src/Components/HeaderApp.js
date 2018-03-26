@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MapConsumer } from '../Containers/Home'
+import { MapConsumer } from '../Stores/MapStore.js'
 import { HeaderAppLanding, HeaderAppMap, HeaderAppMenu } from './index'
 import {headerAppStyles as h} from '../Styles/headerapp-styles.js'
 

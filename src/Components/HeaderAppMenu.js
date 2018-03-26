@@ -11,11 +11,11 @@ export default class HeaderAppMenu extends Component {
                 geocodeByAddress(this.props.state.address)
                     .then(results => getLatLng(results[0]))
                     .then(latLng => {
-                        console.log(latLng)
                         this.props.actions.updateCoords(latLng)
-                        this.props.actions.toggleMap()
+                        this.props.actions.showMap()
                     })
                     .catch(error => {
+                        console.log(error);
                         alert('Veuillez remplir tout les champs avec des informations valides.')
                     })
             } else {
