@@ -9,7 +9,7 @@ import * as s from '../Styles/home-styles.js'
 export default class Home extends Component {
   render() {
     return (
-        <div>
+        <React.Fragment>
          <Navbar/>
             <HeaderApp/>
             <s.section bgc={'#fff'}>
@@ -127,7 +127,7 @@ export default class Home extends Component {
               </s.sectionCtnr>
             </s.section>
             <Footer/>
-        </div>
+        </React.Fragment>
     );
   }
 }
