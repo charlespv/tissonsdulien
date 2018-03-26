@@ -1,12 +1,15 @@
 import React from 'react'
-import { Home } from '../Containers/index'
+import { Home, Login, Register } from '../Containers/index'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-// import { isLogedIn } from '../utils/authUtils'
 
 function Routes() {
     return (
         <Router>
-            <Route path="/" component={Home}/>
+            <React.Fragment>
+                <Route exact path="/" component={Home}/>
+                <Route path="/login" component={Login}/>
+                <Route path="/register" component={Register}/>
+            </React.Fragment>
         </Router>
     )
     // return (
