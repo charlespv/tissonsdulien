@@ -33,6 +33,7 @@ const MapComponent = compose(
       >
         <MarkerWithLabel position={props.coords}
           labelAnchor={new window.google.maps.Point(35, 60)}
+          clickable={true}
           labelStyle={{
             backgroundColor: "#E0403C",
             color: "white",
@@ -41,21 +42,28 @@ const MapComponent = compose(
             borderRadius: "5px",
             zindex: "2200"
         }}>
-          <div onClick={() => console.log('yay')}>Vous</div>
+          <div>Vous</div>
         </MarkerWithLabel>
-        {mockData.data.map((item, index) => (
-          <MarkerWithLabel position={item}
+        {mockData.map((item, index) => (
+          (item.role === props.role) ?
+          <MarkerWithLabel position={item.location}
             key={index}
-            labelAnchor={new window.google.maps.Point(55, 60)}
+            labelAnchor={new window.google.maps.Point(12, 60)}
+            onClick={() => alert(`[DEV] Action de mise en relation avec ${item.first_name}`)}
             labelStyle={{
               backgroundColor: "#E0403C",
               color: "white",
               fontSize: "16px",
               padding: "10px 16px",
-              borderRadius: "5px"
+              borderRadius: "5px",
+              minWidth: "120px",
+              zindex: "2200"
           }}>
-            <div>{`Voisin n°${index}`}</div>
-          </MarkerWithLabel>
+            <React.Fragment>
+              <div>{`${item.first_name} ${item.last_name}`}</div>
+              <div>{`Note: ${item.rate}/5`}</div>
+            </React.Fragment>
+          </MarkerWithLabel> : null
         ))}
       </MarkerClusterer>
     </GoogleMap>
@@ -87,8 +95,7 @@ export default class HeaderAppMap extends React.PureComponent {
   render() {   
     return (
       <s.map>
-        <s.mapOverlay></s.mapOverlay>
-        <MapComponent coords={this.state.coords}/>
+        <MapComponent coords={this.state.coords} role={this.props.state.role}/>
       </s.map>
     )
   }

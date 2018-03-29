@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import * as consts from './constants'
 import landBg from '../Assets/landing-bg.jpg'
 
@@ -10,6 +10,9 @@ const headerAppRoot = styled.div`
     height: 80vh;
     margin-top: 100px;
     background-color: #2F4E7C;
+    ${props => props.pevents===true && css`
+        pointer-events: all;
+    `}
 `
 
 const headerAppCtnr = styled.div`
@@ -21,6 +24,9 @@ const headerAppCtnr = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+    ${props => props.pevents===true && css`
+        pointer-events: none;
+    `}
 `
 
 const lbase = `
@@ -80,6 +86,7 @@ const appMenu = styled.div`
     display: block;
     text-align: center;
     background-color: white;
+    pointer-events: all;
     & > div:last-child {
         font-weight: 700;
         font-size: 22px;
@@ -128,13 +135,6 @@ const map = styled.div`
     ${lbase}
 `
 
-const mapOverlay = styled.div`
-    position: absolute;
-    z-index: 800;
-    width: 100%;
-    height: 100%;
-`
-
 // EXPORTS
 
 const lstyles = {
@@ -146,8 +146,7 @@ const lstyles = {
 }
 
 const mapStyles = {
-    map: map,
-    mapOverlay: mapOverlay
+    map: map
 }
 
 const headerAppStyles = {

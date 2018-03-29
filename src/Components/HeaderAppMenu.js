@@ -34,7 +34,7 @@ export default class HeaderAppMenu extends Component {
             onChange: (address) => this.props.actions.updateAddress(address)
         }
         return (
-            <h.container>
+            <h.container pevents={this.props.state.showMap}>
                 <m.appMenu>
                     <m.title>La rencontre se fait ici</m.title>
                     <m.inputGroup>
