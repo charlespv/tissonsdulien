@@ -1,5 +1,5 @@
 import React from 'react'
-import { Home, Login, Register } from '../Containers/index'
+import { Home, Login, Register, Profile } from '../Containers'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 function Routes() {
@@ -9,24 +9,10 @@ function Routes() {
                 <Route exact path="/" component={Home}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/register" component={Register}/>
+                <Route path="/profile/:id" component={Profile}/>
             </React.Fragment>
         </Router>
     )
-    // return (
-    //     <Router>
-    //         {(isLogedIn()) ?
-    //             <div>
-    //                 <Route exact path="/" component={HomeContainer} />
-    //                 <Route exact path="/settings" component={SettingsContainer} />
-    //             </div>
-    //         :
-    //             <div>
-    //                 <Route exact path="/" component={LoginContainer} />
-    //                 <Route exact path="/register" component={RegisterContainer} />
-    //             </div>
-    //         }
-    //     </Router>
-    // )
 }
 
 export default Routes

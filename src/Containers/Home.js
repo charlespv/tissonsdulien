@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Navbar, HeaderApp, Footer } from '../Components/index.js'
+import { Navbar, HeaderApp, Footer } from '../Components'
 import glyphs from '../Assets/glyphs/index'
 import testimonials from '../Assets/testimonials/index'
 import * as consts from '../Styles/constants.js'

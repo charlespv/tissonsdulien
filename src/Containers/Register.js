@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { UserConsumer } from '../Stores/UserStore'
-import { Navbar, Footer } from '../Components/index.js'
+import { Navbar, Footer } from '../Components'
 import logoImg from '../Assets/logo.png'
 import * as s from '../Styles/logreg-styles'
 import * as btn from '../Styles/buttons'
