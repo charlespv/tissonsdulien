@@ -9,11 +9,11 @@ class Home extends Component {
     return (
         <s.NavbarRoot>
             <s.NavbarContainer>
-                <div>
+                <React.Fragment>
                     <Link to={'/'}>
                         <s.NavbarLogo src={logo}/>
                     </Link>
-                </div>
+                </React.Fragment>
                 <s.NavbarLinks>
                     <NavLink to={'/about'}>Nos valeurs</NavLink>
                     <NavLink to={'/'}>Aide</NavLink>
