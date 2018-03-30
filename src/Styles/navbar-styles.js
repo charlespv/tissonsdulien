@@ -23,7 +23,7 @@ const NavbarContainer = styled.div`
 `
 
 const NavbarLogo = styled.img`
-    height: 85px;
+    height: 90px;
     width: auto;
 `
 
